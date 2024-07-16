@@ -284,11 +284,12 @@ function viteLegacyPlugin(options: Options = {}): Plugin[] {
         if (!modernPolyfills.size) {
           return
         }
-        isDebug &&
+        if (isDebug) {
           console.log(
             `[@vitejs/plugin-legacy] modern polyfills:`,
             modernPolyfills,
           )
+        }
         const polyfillChunk = await buildPolyfillChunk(
           config.mode,
           modernPolyfills,
@@ -326,11 +327,12 @@ function viteLegacyPlugin(options: Options = {}): Plugin[] {
       }
 
       if (legacyPolyfills.size || !options.externalSystemJS) {
-        isDebug &&
+        if (isDebug) {
           console.log(
             `[@vitejs/plugin-legacy] legacy polyfills:`,
             legacyPolyfills,
           )
+        }
 
         await buildPolyfillChunk(
           config.mode,
@@ -365,8 +367,9 @@ function viteLegacyPlugin(options: Options = {}): Plugin[] {
       config = _config
 
       modernTargets = options.modernTargets || modernTargetsBabel
-      isDebug &&
+      if (isDebug) {
         console.log(`[@vitejs/plugin-legacy] modernTargets:`, modernTargets)
+      }
 
       if (!genLegacy || config.build.ssr) {
         return
@@ -376,7 +379,9 @@ function viteLegacyPlugin(options: Options = {}): Plugin[] {
         options.targets ||
         browserslistLoadConfig({ path: config.root }) ||
         'last 2 versions and not dead, > 0.3%, Firefox ESR'
-      isDebug && console.log(`[@vitejs/plugin-legacy] targets:`, targets)
+      if (isDebug) {
+        console.log(`[@vitejs/plugin-legacy] targets:`, targets)
+      }
 
       const getLegacyOutputFileName = (
         fileNames:

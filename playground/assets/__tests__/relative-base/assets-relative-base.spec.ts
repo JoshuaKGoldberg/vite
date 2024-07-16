@@ -203,10 +203,11 @@ test('?url import on css', async () => {
   expect(txt).toMatch(
     isBuild ? /http.*\/other-assets\/icons-[-\w]{8}\.css/ : '/css/icons.css',
   )
-  isBuild &&
+  if (isBuild) {
     expect(findAssetFile(/index.*\.js$/, 'relative-base', 'entries')).toMatch(
       /icons-.+\.css(?!\?used)/,
     )
+  }
 })
 
 test('new URL(..., import.meta.url)', async () => {

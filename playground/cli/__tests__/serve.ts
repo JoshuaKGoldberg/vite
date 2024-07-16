@@ -29,8 +29,12 @@ export async function serve() {
     process.stderr.on('data', (d) => streams[name].err.push(d.toString()))
   }
   const collectErrorStreams = (name, e) => {
-    e.stdout && streams[name].out.push(e.stdout)
-    e.stderr && streams[name].err.push(e.stderr)
+    if (e.stdout) {
+      streams[name].out.push(e.stdout)
+    }
+    if (e.stderr) {
+      streams[name].err.push(e.stderr)
+    }
   }
 
   // helper to output stream content on error

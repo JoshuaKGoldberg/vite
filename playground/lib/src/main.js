@@ -12,4 +12,5 @@ export default function myLib(sel) {
 }
 
 // For triggering unhandled global esbuild helpers in previous regex-based implementation for injection
+// eslint-disable-next-line @typescript-eslint/no-unused-expressions
 ;(function () {})()?.foo

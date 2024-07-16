@@ -104,7 +104,6 @@ export default tseslint.config(
       'no-extra-semi': 'off',
       '@typescript-eslint/no-extra-semi': 'off', // conflicts with prettier
       '@typescript-eslint/no-inferrable-types': 'off',
-      '@typescript-eslint/no-unused-expressions': 'off', // maybe we should turn this on in a new PR
       '@typescript-eslint/no-unused-vars': 'off', // maybe we should turn this on in a new PR
       '@typescript-eslint/no-require-imports': 'off',
       '@typescript-eslint/consistent-type-imports': [
